@@ -8,7 +8,7 @@ import ContactEnquiry from "../components/Home/ContactEnquiry";
 import MapEmbed from "../components/Contact/MapEmbed";
 export default function Home() {
   return (
-    <div className="pt-24">
+    <div className="pt-24 overflow-x-hidden">
       <Banner />
       <AboutHome />
       <ServicesHome />
