@@ -3,11 +3,11 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 export default function Footer() {
   const pages = [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "about" },
-    { name: "Services", href: "services" },
-    { name: "Gallery", href: "gallery" },
-    { name: "Enquiry", href: "enquiry" },
-    { name: "Contact", href: "contact" },
+    { name: "About Us", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Gallery", href: "/gallery" },
+    { name: "Enquiry", href: "/enquiry" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (

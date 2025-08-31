@@ -1,10 +1,19 @@
 import { useState } from "react";
 import { Menu, X, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
-import { Link } from "react-router-dom"; // 👈 import Link
+import { Link } from "react-router-dom"; 
 import logo from "../assets/logo.png";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+
+  const navLinks = [
+    { name: "Home", to: "/" },
+    { name: "About", to: "/about" },
+    { name: "Services", to: "/services" },
+    { name: "Gallery", to: "/gallery" },
+    { name: "Enquiry", to: "/enquiry" },
+    { name: "Contact Us", to: "/contact" },
+  ];
 
   return (
     <header className="fixed w-full z-50">
@@ -16,28 +25,16 @@ export default function Navbar() {
             <span>✉️ panchalsourav32@gmail.com</span>
           </div>
           <div className="flex space-x-4">
-            <a
-              href="#"
-              className="hover:text-[var(--color-primary)] transition"
-            >
+            <a href="#" className="hover:text-[var(--color-primary)] transition">
               <Facebook size={18} />
             </a>
-            <a
-              href="#"
-              className="hover:text-[var(--color-primary)] transition"
-            >
+            <a href="#" className="hover:text-[var(--color-primary)] transition">
               <Twitter size={18} />
             </a>
-            <a
-              href="#"
-              className="hover:text-[var(--color-primary)] transition"
-            >
+            <a href="#" className="hover:text-[var(--color-primary)] transition">
               <Linkedin size={18} />
             </a>
-            <a
-              href="#"
-              className="hover:text-[var(--color-primary)] transition"
-            >
+            <a href="#" className="hover:text-[var(--color-primary)] transition">
               <Instagram size={18} />
             </a>
           </div>
@@ -49,53 +46,22 @@ export default function Navbar() {
         <div className="max-w-[1280px] mx-auto flex justify-between items-center px-6 py-3">
           {/* Logo */}
           <div className="flex">
-            <Link to="/">
-              <img
-                src={logo}
-                alt="Welldone Metalworks"
-                className="h-[72px] w-auto"
-              />
+            <Link to="/" onClick={() => setIsOpen(false)}>
+              <img src={logo} alt="Welldone Metalworks" className="h-[72px] w-auto" />
             </Link>
           </div>
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex space-x-10 font-medium text-lg">
-            <Link
-              to="/"
-              className="hover:text-[var(--color-primary)] transition"
-            >
-              Home
-            </Link>
-            <Link
-              to="/about"
-              className="hover:text-[var(--color-primary)] transition"
-            >
-              About
-            </Link>
-            <Link
-              to="/services"
-              className="hover:text-[var(--color-primary)] transition"
-            >
-              Services
-            </Link>
-            <Link
-              to="/gallery"
-              className="hover:text-[var(--color-primary)] transition"
-            >
-              Gallery
-            </Link>
-            <Link
-              to="/enquiry"
-              className="hover:text-[var(--color-primary)] transition"
-            >
-              Enquiry
-            </Link>
-            <Link
-              to="/contact"
-              className="hover:text-[var(--color-primary)] transition"
-            >
-              Contact Us
-            </Link>
+            {navLinks.map((link, idx) => (
+              <Link
+                key={idx}
+                to={link.to}
+                className="hover:text-[var(--color-primary)] transition"
+              >
+                {link.name}
+              </Link>
+            ))}
           </nav>
 
           {/* CTA Button */}
@@ -121,45 +87,21 @@ export default function Navbar() {
       {/* ---------- Mobile Menu ---------- */}
       {isOpen && (
         <div className="md:hidden bg-white px-6 py-4 space-y-4 text-lg shadow">
-          <Link
-            to="/"
-            className="block hover:text-[var(--color-primary)] transition"
-          >
-            Home
-          </Link>
-          <Link
-            to="/about"
-            className="block hover:text-[var(--color-primary)] transition"
-          >
-            About
-          </Link>
-          <Link
-            to="/services"
-            className="block hover:text-[var(--color-primary)] transition"
-          >
-            Services
-          </Link>
-          <Link
-            to="/gallery"
-            className="block hover:text-[var(--color-primary)] transition"
-          >
-            Gallery
-          </Link>
-          <Link
-            to="/enquiry"
-            className="block hover:text-[var(--color-primary)] transition"
-          >
-            Enquiry
-          </Link>
-          <Link
-            to="/contact"
-            className="block hover:text-[var(--color-primary)] transition"
-          >
-            Contact Us
-          </Link>
+          {navLinks.map((link, idx) => (
+            <Link
+              key={idx}
+              to={link.to}
+              className="block hover:text-[var(--color-primary)] transition"
+              onClick={() => setIsOpen(false)} // ✅ Close menu on click
+            >
+              {link.name}
+            </Link>
+          ))}
+
           <Link
             to="/contact"
             className="block bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] hover:from-[var(--color-secondary)] hover:to-[var(--color-accent)] text-white px-8 py-3 rounded-lg text-center shadow-md font-semibold text-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--color-primary)]/40"
+            onClick={() => setIsOpen(false)} // ✅ Close menu on CTA click
           >
             Get in Touch
           </Link>
