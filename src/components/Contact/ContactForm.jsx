@@ -35,14 +35,33 @@ export default function ContactSection() {
       message: formData.message,
     };
 
+    // 1️⃣ Send email via EmailJS
     emailjs
       .send(
-        "service_d3cmn09",
-        "template_896zkcf",
+        "service_d3cmn09", // your EmailJS service ID
+        "template_896zkcf", // your EmailJS template ID
         templateParams,
-        "VNkGJBgBYKU8OjweK"
+        "VNkGJBgBYKU8OjweK" // your EmailJS public key
       )
       .then(() => {
+        // 2️⃣ Send data to Google Sheet
+        fetch(
+          "https://script.google.com/macros/s/AKfycbz3fVU1goR7DCWhPm-wXYeGYHpAFfv9sjsGfXpCfDQa3ol2JYikB-gn43z8ZhaV145Wjw/exec",
+          {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name: formData.name,
+              email: formData.email,
+              subject: formData.subject,
+              message: formData.message,
+            }),
+          }
+        );
+
         setStatus({ loading: false, success: true });
         setFormData({ name: "", email: "", subject: "", message: "" });
       })
