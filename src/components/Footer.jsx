@@ -1,4 +1,5 @@
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
+import { Link } from "react-router-dom"; // 👈 Import Link
 
 export default function Footer() {
   const pages = [
@@ -26,18 +27,10 @@ export default function Footer() {
             At Welldone Metalworks, we craft premium metal components with precision and care, delivering high-quality fabrication solutions.
           </p>
           <div className="flex space-x-4">
-            <a href="#" className="hover:text-cyan-400 transition">
-              <FaFacebookF size={18} />
-            </a>
-            <a href="#" className="hover:text-blue-400 transition">
-              <FaTwitter size={18} />
-            </a>
-            <a href="#" className="hover:text-pink-400 transition">
-              <FaInstagram size={18} />
-            </a>
-            <a href="#" className="hover:text-red-500 transition">
-              <FaYoutube size={18} />
-            </a>
+            <a href="#" className="hover:text-cyan-400 transition"><FaFacebookF size={18} /></a>
+            <a href="#" className="hover:text-blue-400 transition"><FaTwitter size={18} /></a>
+            <a href="#" className="hover:text-pink-400 transition"><FaInstagram size={18} /></a>
+            <a href="#" className="hover:text-red-500 transition"><FaYoutube size={18} /></a>
           </div>
         </div>
 
@@ -49,9 +42,12 @@ export default function Footer() {
           <ul className="space-y-2 text-gray-400">
             {pages.map((page, idx) => (
               <li key={idx}>
-                <a href={page.href} className="hover:text-cyan-400 transition">
+                <Link
+                  to={page.href} // 👈 Use Link instead of <a>
+                  className="hover:text-cyan-400 transition"
+                >
                   {page.name}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -63,12 +59,13 @@ export default function Footer() {
             Services
           </h2>
           <ul className="space-y-2 text-gray-400">
-            <li><a href="services" className="hover:text-cyan-400 transition">Custom Metal Fabrication</a></li>
-            <li><a href="services" className="hover:text-cyan-400 transition">Structural Metalworks</a></li>
-            <li><a href="services" className="hover:text-cyan-400 transition">Decorative Metalwork</a></li>
-            <li><a href="services" className="hover:text-cyan-400 transition">Metal Finishing & Coating</a></li>
-            <li><a href="services" className="hover:text-cyan-400 transition">Welding & Repairs</a></li>
-            <li><a href="services" className="hover:text-cyan-400 transition">Polycarbonate Roofing</a></li>
+            {["Custom Metal Fabrication","Structural Metalworks","Decorative Metalwork","Metal Finishing & Coating","Welding & Repairs","Polycarbonate Roofing"].map((service, idx) => (
+              <li key={idx}>
+                <Link to="/services" className="hover:text-cyan-400 transition">
+                  {service}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 

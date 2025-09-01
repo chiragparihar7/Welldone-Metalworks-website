@@ -8,8 +8,8 @@
 } */
 
 :root {
-  --color-primary: #2563eb;   /* Bright Blue */
-  --color-secondary: #06b6d4; /* Cyan/Teal */
-  --color-accent: #7c3aed;    /* Indigo/Violet */
-  --color-dark: #0f172a;      /* Slate/Dark Navy */
+  --color-primary: #2563eb;   
+  --color-secondary: #06b6d4; 
+  --color-accent: #7c3aed;   
+  --color-dark: #0f172a;     
 }
