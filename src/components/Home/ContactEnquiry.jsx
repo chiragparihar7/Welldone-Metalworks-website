@@ -68,7 +68,7 @@ const ContactEnquiry = () => {
     <section className="py-10 px-6 bg-gradient-to-b from-gray-150 to-gray-300">
       {/* Main Heading */}
       <div className="max-w-[1280px] mx-auto text-center mb-16">
-        <h1 className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+        <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
           Get in Touch With Us
         </h1>
         <p className="text-gray-700 mt-4 max-w-3xl mx-auto">
